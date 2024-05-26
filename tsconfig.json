@@ -1,11 +1,22 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "module": "commonjs",
-    "outDir": "dist",
-    "strict": true,
+    "module": "ESNext",
+    "target": "ESNext",
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
     "esModuleInterop": true,
-    "skipLibCheck": true
+    "moduleResolution": "Node",
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "baseUrl": "./src",
+    "sourceMap": true
   },
-  "include": ["src/**/*.ts"]
+  "ts-node": {
+    "experimentalSpecifierResolution": "node",
+    "transpileOnly": true,
+    "esm": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["**/*.spec.ts"]
 }
