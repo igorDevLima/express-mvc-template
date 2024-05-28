@@ -4,7 +4,7 @@ import { exec } from "node:child_process";
 export const installDependencies = async (answers: Answers) => {
   const databaseDependency =
     answers.database === "MySql"
-      ? "mysql12"
+      ? "mysql2"
       : answers.database === "PostgreSQL"
       ? "pg"
       : "mongoose";
