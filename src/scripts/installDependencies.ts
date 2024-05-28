@@ -6,7 +6,14 @@ export const installDependencies = async (
   language: string,
   database: string
 ) => {
-  const tsDevDependencies = `@types/node ts-node typescript`;
+  const databaseDependency =
+    database === "MySql"
+      ? "mysql12"
+      : database === "PostgreSQL"
+      ? "pg"
+      : "mongoose";
+
+  const tsDevDependencies = `@types/node ts-node typescript ${databaseDependency}`;
 
   const dependencies = `express joi express-async-errors`;
   const devDependencies = `nodemon ${
