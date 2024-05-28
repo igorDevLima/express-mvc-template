@@ -1,15 +1,11 @@
-import { fs } from "config/fs";
+import { Answers } from "config/questions/interface";
 import { exec } from "node:child_process";
 
-export const installDependencies = async (
-  directoryPath: fs.PathLike,
-  language: string,
-  database: string
-) => {
+export const installDependencies = async (answers: Answers) => {
   const databaseDependency =
-    database === "MySql"
+    answers.database === "MySql"
       ? "mysql12"
-      : database === "PostgreSQL"
+      : answers.database === "PostgreSQL"
       ? "pg"
       : "mongoose";
 
@@ -17,13 +13,13 @@ export const installDependencies = async (
 
   const dependencies = `express joi express-async-errors`;
   const devDependencies = `nodemon ${
-    language === "TypeScript" && tsDevDependencies
+    answers.language === "TypeScript" && tsDevDependencies
   }`;
 
   try {
     exec(
       `npm install ${dependencies} && npm install -D ${devDependencies}`,
-      { cwd: directoryPath as string },
+      { cwd: answers.directory as string },
       (error, stdout, stderr) => {
         if (error) {
           console.error(`exec error: ${error}`);

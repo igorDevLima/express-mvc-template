@@ -13,11 +13,7 @@ inquirer
 
     await generateFiles(answers);
 
-    await installDependencies(
-      answers.directory,
-      answers.language,
-      answers.database
-    );
+    await installDependencies(answers);
   })
   .catch((error) => {
     if (error.isTtyError) {
