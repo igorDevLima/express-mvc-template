@@ -14,7 +14,10 @@
     "type": "git",
     "url": "https://github.com/igorDevLima/express-mvc-template"
   },
-  "bin": "bin/cli.js",
+  "files": [
+    "./dist",
+    "./bin"
+  ],
   "license": "ISC",
   "dependencies": {
     "inquirer": "^9.2.22"
