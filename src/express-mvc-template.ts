@@ -8,7 +8,7 @@ import { generatePackageType } from "./scripts/generatePackageType.js";
 inquirer
   .prompt(questions)
   .then(async (answers) => {
-    if (answers.directory != ".") {
+    if (answers.directory != "." && answers.directory != "") {
       generateDirectory(answers.directory);
     }
 
