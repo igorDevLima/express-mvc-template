@@ -9,9 +9,9 @@ export const installDependencies = async (answers: Answers) => {
       ? "pg"
       : "mongoose";
 
-  const tsDevDependencies = `@types/node ts-node typescript ${databaseDependency}`;
+  const tsDevDependencies = `@types/node ts-node typescript`;
 
-  const dependencies = `express joi express-async-errors`;
+  const dependencies = `express joi express-async-errors ${databaseDependency}`;
   const devDependencies = `nodemon ${
     answers.language === "TypeScript" && tsDevDependencies
   }`;
