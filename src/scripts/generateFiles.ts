@@ -5,10 +5,12 @@ import { asyncWriteFile } from "../functions/asyncWriteFile.js";
 import { packageJson } from "../contents/packageJson.js";
 import { envExample } from "../contents/envExample.js";
 import { gitIgnore } from "../contents/gitIgnore.js";
+import { dockerFile } from "../contents/docker.js";
 
 type TemplateFile = {
   directory: string;
   content: string;
+  ignore?: boolean | false;
 }[];
 
 export const generateFiles = async (answers: Answers) => {
@@ -24,6 +26,11 @@ export const generateFiles = async (answers: Answers) => {
     {
       directory: "/.gitignore",
       content: gitIgnore(),
+    },
+    {
+      directory: "/Dockerfile",
+      content: dockerFile(),
+      ignore: answers.docker === "no" && true,
     },
   ];
 
