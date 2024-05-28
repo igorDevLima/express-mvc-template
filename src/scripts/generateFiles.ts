@@ -10,7 +10,7 @@ import { dockerFile } from "../contents/docker.js";
 type TemplateFile = {
   directory: string;
   content: string;
-  ignore?: boolean | false;
+  ignore?: boolean;
 }[];
 
 export const generateFiles = async (answers: Answers) => {
@@ -37,6 +37,7 @@ export const generateFiles = async (answers: Answers) => {
   try {
     files.map(
       async (file) =>
+        (file.ignore === undefined || file.ignore === false) &&
         await asyncWriteFile(
           `${answers.directory}${file.directory}`,
           file.content
