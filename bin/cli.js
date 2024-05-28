@@ -1,3 +1,5 @@
-import { exec } from "node:child_process";
+#!/usr/bin/env node
 
-exec("npm run start");
+"use strict";
+
+import "../dist/express-mvc-template.js";

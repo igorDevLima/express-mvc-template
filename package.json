@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "type": "module",
   "scripts": {
-    "start": "node --no-warnings=ExperimentalWarning --loader ts-node/esm src/index.ts",
+    "start": "node --no-warnings=ExperimentalWarning --loader ts-node/esm bin/cli.js",
     "build": "tsc",
     "serve": "node dist/index.js"
   },
@@ -18,6 +18,7 @@
     "./dist",
     "./bin"
   ],
+  "bin": "./bin/cli.js",
   "license": "ISC",
   "dependencies": {
     "inquirer": "^9.2.22"
