@@ -3,6 +3,7 @@ import { questions } from "./config/questions/index.js";
 import { generateDirectory } from "./scripts/generateDirectory.js";
 import { generateFiles } from "./scripts/generateFiles.js";
 import { installDependencies } from "./scripts/installDependencies.js";
+import { generatePackageType } from "./scripts/generatePackageType.js";
 
 inquirer
   .prompt(questions)
@@ -10,6 +11,8 @@ inquirer
     if (answers.directory != ".") {
       generateDirectory(answers.directory);
     }
+
+    await generatePackageType(answers);
 
     await generateFiles(answers);
 
