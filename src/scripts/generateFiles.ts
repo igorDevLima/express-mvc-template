@@ -1,14 +1,10 @@
-import { fs, fsAsync } from "../config/fs.js";
-import { packageJson } from "../contents/packageJson.js";
 
-export const generateFiles = async (
-  directoryPath: fs.PathLike,
-  language: string
-) => {
+import { packageJson } from "../contents/packageJson.js";
+import { Answers } from "config/questions/interface.js";
+export const generateFiles = async (answers: Answers) => {
   try {
-    await fsAsync.writeFile(
-      `${directoryPath}/package.json`,
-      packageJson(language)
+      `${answers.directory}/package.json`,
+      packageJson(answers.language)
     );
   } catch (err) {
     console.error(err);

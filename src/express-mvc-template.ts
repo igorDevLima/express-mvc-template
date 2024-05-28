@@ -11,7 +11,7 @@ inquirer
       generateDirectory(answers.directory);
     }
 
-    await generateFiles(answers.directory, answers.language);
+    await generateFiles(answers);
 
     await installDependencies(
       answers.directory,
