@@ -8,6 +8,7 @@ import { gitIgnore } from "../contents/gitIgnore.js";
 import { dockerFile } from "../contents/docker.js";
 import { app } from "../contents/app.js";
 import { error } from "../contents/middlewares/error.js";
+import { paramsID } from "../contents/middlewares/paramsID.js";
 import { apiError } from "../contents/helpers/apiError.js";
 import { apiSuccess } from "../contents/helpers/apiSuccess.js";
 import { connection } from "../contents/database/connection.js";
@@ -49,6 +50,10 @@ export const generateFiles = async (answers: Answers) => {
     {
       directory: `/src/common/middlewares/error${fileFormat}`,
       content: error()
+    },
+    {
+      directory: `/src/common/middlewares/paramsID${fileFormat}`,
+      content: paramsID()
     },
     {
       directory: `/src/common/helpers/api-error${fileFormat}`,
