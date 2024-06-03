@@ -8,6 +8,7 @@ import { gitIgnore } from "../contents/gitIgnore.js";
 import { dockerFile } from "../contents/docker.js";
 import { app } from "../contents/app.js";
 import { error } from "../contents/middlewares/error.js";
+import { apiError } from "../contents/helpers/apiError.js";
 import { connection } from "../contents/database/connection.js";
 
 type TemplateFile = {
@@ -47,6 +48,10 @@ export const generateFiles = async (answers: Answers) => {
     {
       directory: `/src/common/middlewares/error${fileFormat}`,
       content: error()
+    },
+    {
+      directory: `/src/common/helpers/api-error${fileFormat}`,
+      content: apiError(answers.language)
     },
   ];
 
