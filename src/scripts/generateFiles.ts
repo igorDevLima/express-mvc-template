@@ -7,6 +7,7 @@ import { envExample } from "../contents/envExample.js";
 import { gitIgnore } from "../contents/gitIgnore.js";
 import { dockerFile } from "../contents/docker.js";
 import { app } from "../contents/app.js";
+import { connection } from "../contents/database/connection.js";
 
 type TemplateFile = {
   directory: string;
@@ -37,6 +38,10 @@ export const generateFiles = async (answers: Answers) => {
     {
       directory: `/src/app${fileFormat}`,
       content: app(answers.packageStructure),
+    },
+    {
+      directory: `/src/common/db/connection${fileFormat}`,
+      content: connection(answers.database)
     },
   ];
 
